@@ -49,7 +49,7 @@
           <p>{{stripeError.message}}</p>
         {{/if}}
       </StripeCard>
-  
+
       <form.field
         @label='Billing Email Address'
         @value={{this.billingInfo.billingEmail}}
@@ -58,11 +58,12 @@
         @disabled={{this.disableForm}}
         @showValidationStatusIcons={{false}}
         @onChange={{action (mut this.billingInfo.billingEmail)}}
+        @validator={{action "validateBillingEmails"}}
         as |Field|
       >
         <Field.input @name='billing_email_address'/>
       </form.field>
-  
+
       <form.field
         @label='Company Name'
         @value={{this.billingInfo.company}}
@@ -76,7 +77,7 @@
         <Field.input @name='company_name'/>
         <div class="travis-form__error-message">&nbsp;</div>
       </form.field>
-  
+
       <form.field
         @label='Street Address'
         @value={{this.billingInfo.address}}
@@ -89,7 +90,7 @@
       >
         <Field.input @name='address'/>
       </form.field>
-  
+
       <div class='flex flex--col flex-md-row'>
         <div class='full-width form-elem inline-form-elem'>
           <form.field
@@ -163,7 +164,7 @@
         </div>
         {{/if}}
       </div>
-  
+
       {{#if this.showNonZeroVatConfirmation}}
         <div class='flex justify-between items-center mb-8'>
           <div class='w-4/6 pr-2'>
